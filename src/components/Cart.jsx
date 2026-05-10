@@ -15,15 +15,15 @@ export default function Cart() {
   return (
     <section className="dashboard" style={{ minHeight: '60vh', padding: '80px 0' }}>
       <div className="container">
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '48px' }}>
+        <div className="cart-header">
           <h2 style={{ fontSize: '2.5rem', fontFamily: 'var(--font-serif)', margin: 0 }}>Your Cart</h2>
           <button className="btn-outline" onClick={() => navigate('/')}>Back to Menu</button>
         </div>
 
         {cart.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '64px', background: 'white', borderRadius: '16px', border: '1px solid rgba(125, 132, 113, 0.1)' }}>
+          <div className="cart-empty">
             <div style={{ fontSize: '48px', marginBottom: '16px' }}>🛒</div>
-            <h2 style={{ fontSize: '2.5rem', fontFamily: 'var(--font-serif)', marginBottom: '16px' }}>Your cart is looking a little light.</h2>
+            <h2 style={{ fontSize: '2rem', fontFamily: 'var(--font-serif)', marginBottom: '16px' }}>Your cart is looking a little light.</h2>
             <p style={{ color: '#666', marginBottom: '32px', fontSize: '1.1rem' }}>Let's fix that with something sweet.</p>
             <button className="btn-primary" onClick={() => navigate('/')}>Browse Menu</button>
           </div>
@@ -31,15 +31,15 @@ export default function Cart() {
           <div className="dashboard-grid">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {cart.map((item, index) => (
-                <div key={`${item.id}-${index}`} style={{ display: 'flex', alignItems: 'center', gap: '24px', background: 'white', padding: '16px', borderRadius: '16px', border: '1px solid rgba(125, 132, 113, 0.1)' }}>
-                  <img src={item.image} alt={item.name} style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '8px' }} />
-                  <div style={{ flex: 1 }}>
+                <div key={`${item.id}-${index}`} className="cart-item">
+                  <img src={item.image} alt={item.name} className="cart-item-img" loading="lazy" />
+                  <div style={{ flex: 1, minWidth: 0 }}>
                     <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>{item.name}</h4>
                     <p style={{ color: 'var(--sage)', fontWeight: 'bold', marginTop: '4px' }}>₹{item.price}</p>
                   </div>
                   <button 
                     onClick={() => removeFromCart(index)}
-                    style={{ background: 'none', border: 'none', color: '#c62828', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.9rem', padding: '8px' }}
+                    style={{ background: 'none', border: 'none', color: '#c62828', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.9rem', padding: '8px', minHeight: '44px', whiteSpace: 'nowrap' }}
                   >
                     Remove
                   </button>
@@ -47,7 +47,7 @@ export default function Cart() {
               ))}
             </div>
 
-            <div style={{ background: 'white', padding: '32px', borderRadius: '16px', border: '1px solid rgba(125, 132, 113, 0.1)', height: 'fit-content' }}>
+            <div className="cart-summary">
               <h3 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-serif)', marginBottom: '24px' }}>Order Summary</h3>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', fontSize: '1.1rem' }}>
                 <span style={{ color: '#666' }}>Subtotal ({cart.length} items)</span>

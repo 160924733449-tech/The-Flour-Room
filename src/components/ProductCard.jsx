@@ -46,7 +46,7 @@ export default function ProductCard({ product }) {
     <>
       <div className="product-card">
         <div className="product-img-wrapper">
-          <img src={product.image} alt={product.name} />
+          <img src={product.image} alt={product.name} loading="lazy" />
           {role === 'admin' && (
             <input 
               type="text" 
@@ -121,7 +121,7 @@ export default function ProductCard({ product }) {
             <p style={{ color: '#666', marginBottom: '24px' }}>
               Are you sure you want to remove <strong>{product.name}</strong> from the menu? This action cannot be undone.
             </p>
-            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <button className="btn-outline" onClick={() => setShowDeleteConfirm(false)}>Cancel</button>
               <button 
                 className="btn-primary" 
@@ -152,7 +152,7 @@ export default function ProductCard({ product }) {
             {showPopup === 'save' ? (
               <button className="btn-primary" onClick={() => setShowPopup(null)}>Awesome</button>
             ) : (
-              <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
+              <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <button className="btn-outline" onClick={() => setShowPopup(null)}>Continue Shopping</button>
                 <button className="btn-primary" onClick={() => navigate('/cart')}>View Cart</button>
               </div>

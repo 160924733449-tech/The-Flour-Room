@@ -16,14 +16,14 @@ export default function Home() {
       {role === 'user' && <UserDashboard />}
       
       <section className="product-section container animate-fade-up delay-200">
-        <div className="flex flex-col md:flex-row md:items-end justify-between" style={{ marginBottom: '48px', gap: '24px' }}>
+        <div className="product-section-header">
           <div>
-            <h2 style={{ fontSize: '2.5rem', margin: 0 }}>The Artisanal Collection</h2>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', margin: 0 }}>The Artisanal Collection</h2>
             <div style={{ width: '96px', height: '4px', backgroundColor: 'var(--terracotta)', marginTop: '8px' }}></div>
           </div>
           
           {role === 'admin' && (
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-wrap">
               <button className="btn-primary" onClick={() => alert("Inventory is automatically synced to your Google Sheet!")}>
                 Export Status
               </button>

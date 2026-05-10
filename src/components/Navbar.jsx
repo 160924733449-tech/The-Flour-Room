@@ -21,7 +21,7 @@ export default function Navbar() {
         <div className="nav-actions">
           {currentUser ? (
             <div className="flex items-center gap-4">
-              <span className="hide-mobile" style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>
+              <span className="hide-mobile" style={{ fontWeight: 'bold', fontSize: '0.9rem', maxWidth: '150px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 Welcome, {currentUser} {role === 'admin' ? '(Admin)' : ''}
               </span>
               <button 
@@ -36,7 +36,7 @@ export default function Navbar() {
               className="btn-primary"
               onClick={() => navigate('/login')}
             >
-              Login / Sign Up
+              Login
             </button>
           )}
           
